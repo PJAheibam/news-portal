@@ -10,15 +10,17 @@
   --bg-primary: hsla(194, 13%, 20%, 1);
   --bg-paper: hsla(184, 11%, 28%, 1);
   --accent: hsla(27, 28%, 50%, 1);
-  --accent-bg: hsla(27, 28%, 50%, 0.25);
+  --accent-bg: hsla(27, 28%, 50%, 0.15);
   --accent-bg-hover: hsla(27, 28%, 50%, 0.3);
-  --text: hsla(44, 21%, 83%, 1);
-  --text-hover: hsla(44, 21%, 83%, 1);
+  --text: hsla(44, 21%, 80%, 1);
+  --text-hover: hsla(44, 21%, 90%, 1);
   --border-radius-sm: 0.15rem;
   --border-radius: 0.25rem;
   --border-radius-md: 0.4rem;
 }
 
 body {
+  color: var(--text);
+  font-family: "Open Sans", sans-serif;
   background-color: var(--bg-primary);
 }

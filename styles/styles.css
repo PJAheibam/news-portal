@@ -4,3 +4,86 @@
   width: 100%;
   max-width: 1600px;
 }
+
+/************************** Logo **************************/
+.logo-container {
+  font-size: 1.85rem;
+  text-transform: uppercase;
+}
+
+/********************** Navbar ************************/
+.nav-container {
+  background-color: var(--bg-paper);
+}
+.nav-container .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-container .wrapper .nav-items {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.nav-container .wrapper .nav-items .nav-item .nav-link {
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1.25rem;
+  text-decoration: none;
+  transition: color 350ms ease;
+}
+.nav-container .wrapper .nav-items .nav-item .nav-link:hover {
+  color: var(--text-hover);
+}
+.nav-container .wrapper .nav-items .nav-item .nav-link.active {
+  color: var(--text-hover);
+}
+
+/********************* Category **********************/
+main .category-container {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-block: 1rem;
+  padding-block: 0.5rem;
+}
+main .category-container .category {
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0.35em 0.5em;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--accent-bg);
+  transition: background-color 300ms ease;
+}
+main .category-container .category:hover {
+  background-color: var(--accent-bg-hover);
+}
+main .category-container .category.active {
+  background-color: var(--accent);
+}
+
+/********************** Total Results *****************/
+main .wrapper .total-results {
+  display: block;
+  padding-block: 1rem;
+  text-align: center;
+  background-color: var(--bg-paper);
+  border-radius: var(--border-radius);
+}
+
+/********************** Sort Wrapper *******************/
+main .sort.wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 1rem;
+}
+main .sort.wrapper .left-part {
+  display: flex;
+  gap: 1rem;
+}
+@media screen and (min-width: 720px) {
+  .wrapper {
+    padding-inline: 3.5rem;
+  }
+}
