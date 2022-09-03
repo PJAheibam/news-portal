@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Portal</title>
     <link rel="stylesheet" href="./styles/index.css" />
+    <!--~~~~~~~~~~~~~~~~~~ FONT-AWESOME CDN ~~~~~~~~~~~~~~~~~~~~~-->
+    <script
+      src="https://kit.fontawesome.com/91b854fed5.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
-      <!--~~~~~~~~~~~~~~~~~~~~ NAVBAR [START] ~~~~~~~~~~~~~~~~-->
+      <!--~~~~~~~~~~~~~~~~~~~~ NAVBAR ~~~~~~~~~~~~~~~~-->
       <nav class="nav-container">
         <div class="wrapper">
           <div class="logo-container">
-            <h2>News Portal</h2>
+            <a href="./">Today's Trends</a>
           </div>
           <ul class="nav-items">
             <li class="nav-item">
-              <a class="nav-link" href="./index.html">News</a>
+              <a class="nav-link" href="./">News</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="">Blogs</a>
@@ -25,19 +30,138 @@
           </ul>
         </div>
       </nav>
-      <!--~~~~~~~~~~~~~~~~~~~~ NAVBAR [END] ~~~~~~~~~~~~~~~~-->
     </header>
     <main>
-      <!--~~~~~~~~~~~~~~~~~~~~ CATEGORY SECTION [START] ~~~~~~~~~~~~~~~~-->
-      <section></section>
-      <!--~~~~~~~~~~~~~~~~~~~~ CATEGORY SECTION [END] ~~~~~~~~~~~~~~~~-->
-      <section></section>
-      <section></section>
+      <section class="wrapper">
+        <article>
+          <h3>
+            <i class="fa-solid fa-clipboard-question"></i> Difference between
+            let and var in javascript?
+          </h3>
+          <div class="block">
+            <h4>Let</h4>
+            <ul>
+              <li>Let is block-scoped.</li>
+              <li>Let does not allow to redeclare variables.</li>
+              <li>Hoisting does not occur in let.</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h4>Var</h4>
+            <ul>
+              <li>Var is function scoped.</li>
+              <li>Var allows to redeclare variables.</li>
+              <li>Hoisting occurs in var.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="wrapper">
+        <article>
+          <h3>
+            <i class="fa-solid fa-clipboard-question"></i> Why we should use
+            Template string (Template literals)?
+          </h3>
+          <div class="block">
+            <p>
+              Template Literals are a new ES2015 / ES6 feature that allows you
+              to work with strings in a novel way compared to ES5 and below.
+            </p>
+            <ul>
+              <li>They offer a great syntax to define multiline strings</li>
+              <li>
+                They provide an easy way to interpolate variables and
+                expressions in strings
+              </li>
+              <li>
+                they allow you to create DSLs with template tags (DSL means
+                domain specific language, and it’s for example used in React by
+                Styled Components, to define CSS for a component)
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section class="wrapper">
+        <article>
+          <h3>
+            <i class="fa-solid fa-clipboard-question"></i> Arrow function vs
+            Regular function in javascript?
+          </h3>
+          <div class="block">
+            <h4>Arrow Function</h4>
+            <ul>
+              <li>
+                The behavior of this inside of an arrow function differs
+                considerably from the regular function's this behavior. The
+                arrow function doesn't define its own execution context. No
+                matter how or where being executed, this value inside of an
+                arrow function always equals this value from the outer function.
+                In other words, the arrow function resolves this lexically.
+              </li>
+              <li>
+                A consequence of this resolved lexically is that an arrow
+                function cannot be used as a constructor.
+              </li>
+              <li>
+                No arguments special keyword is defined inside an arrow
+                function.
+              </li>
+              <li>
+                You can return values from the arrow function the same way as
+                from a regular function, but with one useful exception. If the
+                arrow function contains one expression, and you omit the
+                function's curly braces, then the expression is implicitly
+                returned. These are the inline arrows function.
+              </li>
+            </ul>
+          </div>
+          <div class="block">
+            <h4>Regular Function</h4>
+            <ul>
+              <li>
+                Inside of a regular JavaScript function, this value (aka the
+                execution context) is dynamic.
+              </li>
+              <li>The regular function can easily construct objects.</li>
+              <li>
+                Inside the body of a regular function, arguments is a special
+                array-like object containing the list of arguments with which
+                the function has been invoked.
+              </li>
+              <li>
+                Return expression statement returns the result from a function
+                If the return statement is missing, or there's no expression
+                after return statement, the regular function implicitely returns
+                undefined.
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
     </main>
-    <footer></footer>
+
+    <footer class="footer">
+      <div class="logo-container">
+        <a href="./">Today's Trends</a>
+        <p class="copy-right">&copy; Today's Trends 2022</p>
+      </div>
+    </footer>
     <!--~~~~~~~ SCRIPTS [START]~~~~~~~~-->
     <script src="./js/utils.js"></script>
     <script src="./js/index.js"></script>
     <!--~~~~~~~ SCRIPTS [END]~~~~~~~~-->
+
+    <!--~~~~~~~~~~~~~~~~~ ionicons cdn link ~~~~~~~~~~~~~~~-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>

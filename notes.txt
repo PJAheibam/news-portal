@@ -1,0 +1,4 @@
+1. var vs let?
+2. arrow vs regular function?
+3. map forEach filter find?
+4. Why we should use template string?

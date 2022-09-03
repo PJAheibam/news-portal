@@ -219,6 +219,10 @@ main .zero-result .status-code {
   border-radius: var(--border-radius);
   overflow: hidden;
   margin-bottom: 1rem;
+  background-image: url(https://media.istockphoto.com/vectors/image-preview-icon-picture-placeholder-for-website-or-uiux-design-vector-id1222357475?k=20&m=1222357475&s=170667a&w=0&h=YGycIDbBRAWkZaSvdyUFvotdGfnKhkutJhMOZtIoUKY=);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #modal-container .wrapper .modal .content .image-container img {
   width: 100%;
@@ -415,7 +419,7 @@ main .zero-result .status-code {
   color: var(--text-secondary);
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 576px) {
   .wrapper {
     padding-inline: 3.5rem;
   }

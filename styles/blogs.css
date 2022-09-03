@@ -1,0 +1,21 @@
+.fa-solid.fa-clipboard-question {
+  color: var(--accent);
+}
+article {
+  margin-block: 2rem;
+}
+article h3 {
+  font-weight: normal;
+  font-size: 1.5rem;
+}
+article .block {
+  padding-left: 1.25rem;
+  margin-block: 1rem;
+}
+article .block ul {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+article .block ul li {
+  line-height: 1.5rem;
+}

@@ -150,7 +150,9 @@ const displayArticles = (sortBy = FILTER.POPULARITY) => {
                     <div class="rating">
                       ${displayRating(number)}
                     </div>
-                    <div><i class="fa-regular fa-eye"></i>${total_view} K</div>
+                    <div><i class="fa-regular fa-eye"></i>${
+                      total_view ? total_view + " K" : "Unknown"
+                    }</div>
               </div>
               <div class="read-more">
                   <button onclick="fetchArticle('${_id}')" class="btn">Read More <i class="fa-solid fa-arrow-right"></i> </button>
@@ -166,6 +168,10 @@ const displayArticles = (sortBy = FILTER.POPULARITY) => {
 };
 
 const fetchArticle = async (newsID) => {
+  modalContainer.style.opacity = 1;
+  modalContainer.style.pointerEvents = "auto";
+  modal.style.transform = "scale(1)";
+  modal.innerHTML = "";
   const NEWS_API_URL = `https://openapi.programming-hero.com/api/news/${newsID}`;
   try {
     const res = await fetch(NEWS_API_URL);
@@ -186,10 +192,6 @@ const openArticle = ({
   image_url,
   details,
 }) => {
-  modalContainer.style.opacity = 1;
-  modalContainer.style.pointerEvents = "auto";
-  modal.style.transform = "scale(1)";
-  modal.innerHTML = "";
   modal.innerHTML = `
   <button onclick="closeArticle()" class="btn modal-close-btn">
               <i class="fa-solid fa-xmark"></i>
@@ -202,7 +204,7 @@ const openArticle = ({
                     alt="author"
                   />
                 </div>
-                <div class="name">${name}</div>
+                <div class="name">${name ? name : "Unknown"}</div>
               </div>
               <div class="block">
                 <i
@@ -213,7 +215,7 @@ const openArticle = ({
               </div>
               <div class="block">
                 <i class="fa-regular fa-eye" style="font-size: 1.5rem"></i>
-                <p>${total_view} K</p>
+                <p>${total_view ? total_view + " K" : "Unknown"}</p>
               </div>
               <div class="block">
                 <span class="star"><i class="fa-solid fa-star"></i></span
@@ -245,7 +247,7 @@ const openArticle = ({
                     />
                   </div>
                   <div>
-                    <div class="name">${name}</div>
+                    <div class="name">${name ? name : "Unknown Author"}</div>
                     <p class="date"><i class="fa-solid fa-calendar-days"color="red"></i> <span>${published_date}</span></p>
                   </div>
 
@@ -253,7 +255,9 @@ const openArticle = ({
                     <div class="rating">
                       ${displayRating(number)}
                     </div>
-                    <div><i class="fa-regular fa-eye"></i>${total_view} K</div>
+                    <div><i class="fa-regular fa-eye"></i>${
+                      total_view ? total_view + " K" : "Unknown"
+                    }</div>
                   </div>
                 </div>
               </div>

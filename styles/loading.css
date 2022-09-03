@@ -1,5 +1,4 @@
 .loading-wrapper {
-  /* background-color: blue; */
   width: 100%;
   height: 0;
   display: flex;
@@ -12,16 +11,19 @@
 }
 
 .profile-main-loader {
-  /* position: fixed !important; */
-  /* left: 50% !important; */
-  /* margin-left: -100px; */
-  /* top: 50% !important; */
-  /* margin-top: -100px; */
-  /* background-color: blue; */
   width: fit-content;
   z-index: 10 !important;
   transform: scale(0);
   transition: transform 300ms ease;
+}
+.modal-container .profile-main-loader {
+  left: 50% !important;
+  margin-left: -100px;
+  position: fixed !important;
+  top: 50% !important;
+  margin-top: -100px;
+  width: 45px;
+  z-index: 9000 !important;
 }
 .profile-main-loader.active {
   transform: scale(1);
@@ -105,31 +107,31 @@
 }
 @-webkit-keyframes color {
   0% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
   40% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
   66% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
   80%,
   90% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
 }
 @keyframes color {
   0% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
   40% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
   66% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
   80%,
   90% {
-    stroke: #70c542;
+    stroke: var(--accent);
   }
 }
