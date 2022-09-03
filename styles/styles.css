@@ -7,8 +7,15 @@
 
 /************************** Logo **************************/
 .logo-container {
-  font-size: 1.85rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
+}
+.logo-container a {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 2rem;
+  text-decoration: none;
+  color: var(--accent);
 }
 
 .btn {
@@ -48,6 +55,7 @@
 }
 .nav-container .wrapper {
   display: flex;
+  padding-block: 1rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -392,11 +400,21 @@ main .zero-result .status-code {
 }
 
 /********************* Footer *****************/
-footer {
-  margin-top: 1rem;
-  min-height: 300px;
+.footer {
+  margin-top: 3rem;
+  min-height: 200px;
   background-color: var(--bg-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.footer .copy-right {
+  margin-top: 5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
 @media screen and (min-width: 720px) {
   .wrapper {
     padding-inline: 3.5rem;
