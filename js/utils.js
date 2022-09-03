@@ -1,11 +1,20 @@
-const navLinks = document.getElementsByClassName("nav-link");
-console.log(navLinks);
-const activeLink = (index) => {
-  for (let i = 0; i < navLinks.length; i++) {
-    if (i === index) {
-      navLinks[i].classList.add(".active");
-    } else {
-      navLinks[i].classList.remove(".active");
-    }
-  }
+const categories = document.getElementsByClassName("category");
+
+const handleCategoryClick = (event) => {
+  const prevActiveCategory = document.querySelector(".category.active");
+  prevActiveCategory.classList.remove("active");
+  event.target.classList.add("active");
+};
+
+const getCategories = async () => {
+  const API_URL = "";
+  const res = await fetch(API_URL);
+  const data = await res.json;
+  console.log(data);
+};
+
+const displayCategories = (articles) => {
+  const categoryContainer = document.querySelector(".category-container");
+  articles.forEach((article) => {});
+  console.log(articles);
 };

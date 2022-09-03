@@ -11,6 +11,36 @@
   text-transform: uppercase;
 }
 
+.btn {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  background-color: var(--accent-bg);
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 500;
+  padding: 0.35em 0.5em;
+  transition: background-color 300ms ease;
+}
+.btn:hover {
+  color: var(--text-hover);
+  background-color: var(--accent-bg-hover);
+}
+.btn:active {
+  background-color: var(--accent);
+  transform: scale(0.975);
+}
+.btn:disabled {
+  user-select: none;
+  pointer-events: none;
+  color: var(--text-disabled);
+  background-color: var(--bg-disabled);
+}
+.btn.active {
+  background-color: var(--accent);
+}
+
 /********************** Navbar ************************/
 .nav-container {
   background-color: var(--bg-paper);
@@ -41,26 +71,11 @@
 
 /********************* Category **********************/
 main .category-container {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-block: 1rem;
   padding-block: 0.5rem;
-}
-main .category-container .category {
-  cursor: pointer;
-  font-weight: 500;
-  padding: 0.35em 0.5em;
-  border-radius: var(--border-radius-sm);
-  background-color: var(--accent-bg);
-  transition: background-color 300ms ease;
-}
-main .category-container .category:hover {
-  background-color: var(--accent-bg-hover);
-}
-main .category-container .category.active {
-  background-color: var(--accent);
 }
 
 /********************** Total Results *****************/
@@ -76,11 +91,93 @@ main .wrapper .total-results {
 main .sort.wrapper {
   display: flex;
   justify-content: space-between;
-  margin-block: 1rem;
-}
-main .sort.wrapper .left-part {
-  display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
+  margin-block: 1rem;
+  margin-bottom: 2rem;
+}
+main .sort.wrapper .part {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/********************* News Section ****************/
+main .grid.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  grid-auto-flow: row;
+}
+.grid.wrapper .card {
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  background-color: var(--bg-paper);
+}
+.grid.wrapper .card .thumbnail {
+  height: 10rem;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-disabled);
+  overflow: hidden;
+}
+.grid.wrapper .card .thumbnail img {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  transition: transform 300ms ease;
+}
+.grid.wrapper .card:hover .thumbnail img {
+  transform: scale(1.05);
+}
+
+.card .card-content {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.card .card-content .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.card .card-content .desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+}
+
+.card .card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--bg-disabled);
+  padding-top: 0.5rem;
+}
+
+.card .card-footer .author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.card .card-footer .avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--bg-disabled);
+}
+
+/********************* Footer *****************/
+footer {
+  margin-top: 1rem;
+  min-height: 300px;
+  background-color: var(--bg-paper);
 }
 @media screen and (min-width: 720px) {
   .wrapper {

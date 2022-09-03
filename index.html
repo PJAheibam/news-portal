@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>News Portal</title>
     <link rel="stylesheet" href="./styles/index.css" />
+    <!--~~~~~~~~~~~~~~~~~~ FONT-AWESOME CDN ~~~~~~~~~~~~~~~~~~~~~-->
+    <script
+      src="https://kit.fontawesome.com/91b854fed5.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header>
@@ -30,11 +35,29 @@
     <main>
       <!--~~~~~~~~~~~~~~~~~~~~ CATEGORY SECTION ~~~~~~~~~~~~~~~~-->
       <section class="wrapper">
-        <ul class="category-container">
-          <li class="category active">All</li>
-          <li class="category">Tech</li>
-          <li class="category">Science</li>
-        </ul>
+        <div class="category-container">
+          <button
+            type="button"
+            onclick="handleCategoryClick(event)"
+            class="btn category active"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            onclick="handleCategoryClick(event)"
+            class="btn category"
+          >
+            Tech
+          </button>
+          <button
+            type="button"
+            onclick="handleCategoryClick(event)"
+            class="btn category"
+          >
+            Science
+          </button>
+        </div>
       </section>
 
       <!--~~~~~~~~~~~~~~~ TOTAL RESULTS SECTION ~~~~~~~~~~~~~~~~~~-->
@@ -45,12 +68,49 @@
       </section>
       <!--~~~~~~~~~~~~~~~ SORT BY SECTION ~~~~~~~~~~~~~~~~~~-->
       <section class="sort wrapper">
-        <div class="left-part">
+        <div class="left part">
           <h4>Sort by</h4>
-          <button>Default</button>
+          <button class="btn" disabled>
+            Default <i class="fa-solid fa-angle-down"></i>
+          </button>
         </div>
-        <div class="right-part">
-          <button>Today's Pick</button><button>Trending</button>
+        <div class="right part">
+          <button class="btn active">Today's Pick</button>
+          <button class="btn">Trending</button>
+        </div>
+      </section>
+      <section class="grid wrapper">
+        <div class="card">
+          <div class="thumbnail">
+            <img
+              src="https://source.unsplash.com/random/300×300"
+              alt="thumbnail"
+            />
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="title">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Similique excepturi repudiandae, aspernatur reiciendis non eos!
+              </h3>
+            </div>
+            <div class="card-body">
+              <p class="desc">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Quisquam laboriosam maiores quasi molestiae ipsum dolorum,
+                distinctio dolore odio aliquam nostrum numquam unde error
+                provident id architecto? Quo ex velit quis.
+              </p>
+            </div>
+            <div class="card-footer">
+              <div class="author">
+                <div class="avatar"></div>
+                <p class="name">Prosenjit Singha</p>
+              </div>
+              <h4 class="views">1.5M</h4>
+              <button class="btn">Read More</button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -59,5 +119,15 @@
     <script src="./js/utils.js"></script>
     <script src="./js/index.js"></script>
     <!--~~~~~~~ SCRIPTS [END]~~~~~~~~-->
+
+    <!--~~~~~~~~~~~~~~~~~ ionicons cdn link ~~~~~~~~~~~~~~~-->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>
