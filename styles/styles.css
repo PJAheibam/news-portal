@@ -51,7 +51,7 @@
 
 /********************** Navbar ************************/
 .nav-container {
-  background-color: var(--bg-paper);
+  background-color: var(--fg-primary);
 }
 .nav-container .wrapper {
   display: flex;
@@ -67,7 +67,7 @@
 .nav-container .wrapper .nav-items .nav-item .nav-link {
   position: relative;
   cursor: pointer;
-  color: var(--text);
+  color: var(--text-secondary);
   font-size: 1.25rem;
   text-decoration: none;
   transition: color 350ms ease;
@@ -87,7 +87,7 @@
   bottom: -0.25em;
   transform: translate(-50%, 0%);
   border-radius: 0.1em;
-  background-color: var(--text-hover);
+  background-color: var(--accent);
 }
 
 /********************* Category **********************/
@@ -415,7 +415,7 @@ main .zero-result .status-code {
 .footer {
   margin-top: 3rem;
   min-height: 200px;
-  background-color: var(--bg-paper);
+  background-color: var(--fg-primary);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -28,7 +28,8 @@
 
 :root {
   --bg-primary: hsla(194, 13%, 20%, 1);
-  --bg-paper: hsla(184, 11%, 28%, 1);
+  --fg-primary: hsla(184, 11%, 28%, 1);
+  --bg-paper: hsla(184, 11%, 28%, 0.25);
   --bg-disabled: hsla(27, 10%, 50%, 0.25);
   --accent: hsla(27, 28%, 50%, 1);
   --accent-bg: hsla(27, 28%, 50%, 0.15);
