@@ -1,14 +1,26 @@
+const FILTER = {
+  POPULARITY: "sort-by-popularity",
+  TODAYS_PICK: "todays-pick",
+  TRENDING: "trending",
+};
+let selectedCategory = {};
 const categories = document.getElementsByClassName("category");
 const modalContainer = document.getElementById("modal-container");
 const modal = document.querySelector("#modal-container .wrapper .modal");
 const loadingWrapper = document.querySelector(".loading-wrapper");
 const mainLoader = document.querySelector(".profile-main-loader");
 const cards = document.getElementById("cards");
+let apiURL = "";
+let savedArticles = [];
 
 const handleCategoryClick = (event) => {
+  // deactivate the active filter effect;
+  const activeButton = document.querySelector(".filter.btn.active");
+  if (activeButton) activeButton.classList.remove("active");
+
   const prevActiveCategory = document.querySelector(".category.active");
-  if (prevActiveCategory !== null)
-    prevActiveCategory.classList.remove("active");
+  if (prevActiveCategory) prevActiveCategory.classList.remove("active");
+
   event.target.classList.add("active");
   const categoryID = event.target.getAttribute("data-category-id");
   const categoryName = event.target.innerText;
@@ -47,71 +59,109 @@ const displayCategories = (categories) => {
 };
 
 const fetchArticles = async (categoryID, categoryName) => {
+  selectedCategory.id = categoryID;
+  selectedCategory.name = categoryName;
   const API_URL = `https://openapi.programming-hero.com/api/news/category/${categoryID}`;
   try {
     const res = await fetch(API_URL);
     const { data } = await res.json();
+    savedArticles = data;
     displayTotalResults(data.length, categoryName);
-    displayArticles(data);
+    displayArticles();
   } catch (error) {
     console.log(error);
   }
 };
+
 const displayTotalResults = (totalArticles, categoryName) => {
   const totalResults = document.querySelector(".total-results");
   // console.log(totalResults);
   totalResults.innerText = `Total ${totalArticles} news found for category ${categoryName}`;
 };
-const displayArticles = (articles) => {
+
+const displayArticles = (sortBy = FILTER.POPULARITY) => {
+  let articles = [];
+
+  if (sortBy === FILTER.POPULARITY) {
+    articles = savedArticles.sort((a, b) => b.total_view - a.total_view);
+  } else if (sortBy === FILTER.TODAYS_PICK) {
+    articles = savedArticles.filter(
+      (article) => article.others_info.is_todays_pick
+    );
+  } else if (sortBy === FILTER.TRENDING) {
+    articles = savedArticles.filter(
+      (article) => article.others_info.is_trending
+    );
+  }
   const zeroResults = document.querySelector(".zero-result");
+  cards.innerHTML = "";
   if (articles.length === 0) {
-    console.log(zeroResults);
     zeroResults.style.display = "flex";
+    toggleSpinner(false);
     return;
   }
   zeroResults.style.display = "none";
-  articles.forEach((article) => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
+  articles.forEach(
+    ({
+      _id,
+      rating: { number },
+      total_view,
+      title,
+      author: { name, published_date, img },
+      image_url,
+      thumbnail_url,
+      details,
+    }) => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
     <div class="thumbnail">
             <img
-              src="${article.thumbnail_url}"
+              src="${thumbnail_url}"
               alt="thumbnail"
             />
           </div>
           <div class="card-content">
             <div class="card-header">
-              <h3 onclick="fetchArticle('${article._id}')" class="title">
-                ${article.title}
+              <h3 onclick="fetchArticle('${_id}')" class="title">
+                ${title}
               </h3>
             </div>
             <div class="card-body">
               <p class="desc">
-                ${article.details}
+                ${details}
               </p>
             </div>
             <div class="card-footer">
               <div class="author">
                 <div class="avatar">
-                  <img src="${article.author.img}" />
+                  <img src="${img}" />
                 </div>
-                <p class="name">${
-                  article.author.name ? article.author.name : "Unknown Author"
-                }</p>
+
+                <div>
+                  <p class="name">${name ? name : "Unknown Author"}</p>
+                  <p class="date"><i class="fa-solid fa-calendar-days"color="red"></i> <span>${
+                    published_date.split(" ")[0]
+                  }</span></p>
+                </div>
+
               </div>
-              <h4 class="views"> 
-              <i class="fa-regular fa-eye"></i>
-              ${article.total_view ? article.total_view : "000"}K
-              </h4>
+              <div class="views">
+                    <div class="rating">
+                      ${displayRating(number)}
+                    </div>
+                    <div><i class="fa-regular fa-eye"></i>${total_view} K</div>
+              </div>
+              <div class="read-more">
+                  <button onclick="fetchArticle('${_id}')" class="btn"> Read More </button>
+              </div>
               
             </div>
           </div>
     `;
-    cards.appendChild(card);
-  });
-
-  console.log("off");
+      cards.appendChild(card);
+    }
+  );
   toggleSpinner(false);
 };
 
@@ -164,20 +214,12 @@ const openArticle = ({
                   </div>
                   <div>
                     <div class="name">${name}</div>
-                    <p class="date">Published On: <span>${published_date}</span></p>
+                    <p class="date"><i class="fa-solid fa-calendar-days"color="red"></i> <span>${published_date}</span></p>
                   </div>
 
                   <div class="views">
                     <div class="rating">
-                      <span class="star"><i class="fa-solid fa-star"></i></span>
-                      <span class="star"><i class="fa-solid fa-star"></i></span>
-                      <span class="star"><i class="fa-solid fa-star"></i></span>
-                      <span class="star"
-                        ><i class="fa-regular fa-star-half-stroke"></i
-                      ></span>
-                      <span class="star"
-                        ><i class="fa-regular fa-star"></i
-                      ></span>
+                      ${displayRating(number)}
                     </div>
                     <div><i class="fa-regular fa-eye"></i>${total_view} K</div>
                   </div>
@@ -205,4 +247,31 @@ const toggleSpinner = (isLoading) => {
     loadingWrapper.classList.remove("active");
     mainLoader.classList.remove("active");
   }
+};
+
+const displayRating = (value) => {
+  // value = parseFloat(value);
+  let string = "";
+  for (let i = 1; i <= 5; i++) {
+    if (i < value) {
+      string += `<span class="star"><i class="fa-solid fa-star"></i></span>`;
+    } else {
+      if (i === Math.ceil(value)) {
+        string += `<span class="star"><i class="fa-regular fa-star-half-stroke"></i
+      ></span>`;
+      } else {
+        string += `<span class="star"><i class="fa-regular fa-star"></i></span>`;
+      }
+    }
+  }
+  return string;
+};
+
+const filterArticle = (event, filter) => {
+  const activeButton = document.querySelector(".filter.btn.active");
+  if (activeButton) activeButton.classList.remove("active");
+  // console.log(activeButton);
+  event.target.classList.add("active");
+  // console.log(event.target.parentElement.children);
+  displayArticles(filter);
 };

@@ -14,7 +14,7 @@
   </head>
   <body>
     <header>
-      <!--~~~~~~~~~~~~~~~~~~~~ NAVBAR [START] ~~~~~~~~~~~~~~~~-->
+      <!--~~~~~~~~~~~~~~~~~~~~ NAVBAR ~~~~~~~~~~~~~~~~-->
       <nav class="nav-container">
         <div class="wrapper">
           <div class="logo-container">
@@ -30,7 +30,6 @@
           </ul>
         </div>
       </nav>
-      <!--~~~~~~~~~~~~~~~~~~~~ NAVBAR [END] ~~~~~~~~~~~~~~~~-->
     </header>
     <main>
       <!--~~~~~~~~~~~~~~~~~~~~ CATEGORY SECTION ~~~~~~~~~~~~~~~~-->
@@ -59,8 +58,15 @@
           </button>
         </div>
         <div class="right part">
-          <button class="btn active">Today's Pick</button>
-          <button class="btn">Trending</button>
+          <button
+            onclick="filterArticle(event, 'todays-pick')"
+            class="filter btn"
+          >
+            Today's Pick
+          </button>
+          <button onclick="filterArticle(event,'trending')" class="filter btn">
+            Trending
+          </button>
         </div>
       </section>
 
@@ -77,66 +83,11 @@
       <section id="modal-container">
         <div class="wrapper">
           <div class="modal">
-            <!-- <button onclick="closeArticle()" class="btn modal-close-btn">
-              <i class="fa-solid fa-xmark"></i>
-            </button> -->
-            <!-- <div class="content">
-              <div class="image-container">
-                <img
-                  src="https://i.ibb.co/M23fhxm/unsplash-Eh-Tc-C9s-YXsw.png"
-                  alt=""
-                />
-              </div>
-              <h4 class="title">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-                eius qui voluptatum obcaecati numquam sunt.
-              </h4>
-              <div class="info">
-                <div class="author">
-                  <div class="avatar">
-                    <img
-                      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <div class="name">Jimmy Dane</div>
-                    <p class="date">Published On: <span>2022-08-24</span></p>
-                  </div>
-
-                  <div class="views">
-                    <div class="rating">
-                      <span class="star"><i class="fa-solid fa-star"></i></span>
-                      <span class="star"><i class="fa-solid fa-star"></i></span>
-                      <span class="star"><i class="fa-solid fa-star"></i></span>
-                      <span class="star"
-                        ><i class="fa-regular fa-star-half-stroke"></i
-                      ></span>
-                      <span class="star"
-                        ><i class="fa-regular fa-star"></i
-                      ></span>
-                    </div>
-                    <div><i class="fa-regular fa-eye"></i>100 K</div>
-                  </div>
-                </div>
-              </div>
-              <p class="desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Praesentium earum consequatur sed qui minus quos quod eius hic
-                debitis, quia sapiente eaque sint quam ad? Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Sit aliquid necessitatibus
-                amet in, animi veniam! Expedita architecto laudantium voluptates
-                qui, rerum, consequuntur eligendi dolorum aut repellendus natus
-                ex asperiores, explicabo odio vel? Tenetur voluptatibus quidem
-                et cum hic nobis voluptates dolor quae dolorem perspiciatis
-                consequatur sapiente dolores, sunt accusantium! Lorem ipsum,
-                dolor sit amet consectetur adipisicing elit. Magnam sequi iusto
-                unde quaerat odio perspiciatis, temporibus consequuntur facere
-                quidem qui incidunt similique iste quis doloribus expedita
-                dignissimos quam deserunt. Quia.
-              </p>
-            </div> -->
+            <!-- CARD -->
           </div>
+          <button class="close-modal" onclick="closeArticle()">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
       </section>
       <!--~~~~~~~~~~~~~~~~~ LOADING ~~~~~~~~~~~~~~-->
