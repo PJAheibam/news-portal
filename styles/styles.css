@@ -311,6 +311,10 @@ main .zero-result .status-code {
   border-radius: var(--border-radius);
   background-color: var(--bg-disabled);
   overflow: hidden;
+  background-image: url(https://media.istockphoto.com/vectors/image-preview-icon-picture-placeholder-for-website-or-uiux-design-vector-id1222357475?k=20&m=1222357475&s=170667a&w=0&h=YGycIDbBRAWkZaSvdyUFvotdGfnKhkutJhMOZtIoUKY=);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .grid.wrapper .card .thumbnail img {
   width: 100%;
