@@ -140,8 +140,8 @@ const displayArticles = (sortBy = FILTER.POPULARITY) => {
 
                 <div>
                   <p class="name">${name ? name : "Unknown Author"}</p>
-                  <p class="date"><i class="fa-solid fa-calendar-days"color="red"></i> <span>${
-                    published_date.split(" ")[0]
+                  <p><i class="fa-solid fa-calendar-days"color="red"></i> <span class="date">${
+                    published_date ? published_date.split(" ")[0] : "Unknown"
                   }</span></p>
                 </div>
 
@@ -153,7 +153,7 @@ const displayArticles = (sortBy = FILTER.POPULARITY) => {
                     <div><i class="fa-regular fa-eye"></i>${total_view} K</div>
               </div>
               <div class="read-more">
-                  <button onclick="fetchArticle('${_id}')" class="btn"> Read More </button>
+                  <button onclick="fetchArticle('${_id}')" class="btn">Read More <i class="fa-solid fa-arrow-right"></i> </button>
               </div>
               
             </div>
@@ -193,7 +193,39 @@ const openArticle = ({
   modal.innerHTML = `
   <button onclick="closeArticle()" class="btn modal-close-btn">
               <i class="fa-solid fa-xmark"></i>
-            </button>
+  </button>
+  <div class="left-content">
+              <div class="author">
+                <div class="avatar">
+                  <img
+                    src="${img}"
+                    alt="author"
+                  />
+                </div>
+                <div class="name">${name}</div>
+              </div>
+              <div class="block">
+                <i
+                  class="fa-solid fa-calendar-days"
+                  style="font-size: 1.5rem"
+                ></i>
+                <p class="date">${published_date}</p>
+              </div>
+              <div class="block">
+                <i class="fa-regular fa-eye" style="font-size: 1.5rem"></i>
+                <p>${total_view} K</p>
+              </div>
+              <div class="block">
+                <span class="star"><i class="fa-solid fa-star"></i></span
+                ><span class="star"><i class="fa-solid fa-star"></i></span
+                ><span class="star"><i class="fa-solid fa-star"></i></span
+                ><span class="star"><i class="fa-solid fa-star"></i></span
+                ><span class="star"
+                  ><i class="fa-regular fa-star-half-stroke"></i
+                ></span>
+              </div>
+  </div>
+
   <div class="content">
               <div class="image-container">
                 <img

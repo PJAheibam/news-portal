@@ -176,6 +176,7 @@ main .zero-result .status-code {
   transform: scale(0);
   transition: transform 300ms ease;
   /* overflow-y: auto; */
+  min-height: 500px;
 }
 
 .modal-close-btn {
@@ -195,7 +196,9 @@ main .zero-result .status-code {
   color: var(--text-hover);
   background-color: var(--danger);
 }
-
+.modal .left-content {
+  display: none;
+}
 #modal-container .wrapper .modal .content {
   padding-right: 0.5rem;
   height: 100%;
@@ -229,18 +232,10 @@ main .zero-result .status-code {
   font-size: 0.75rem;
   color: var(--text-secondary);
 }
-.views {
-  /* margin-left: auto; */
-  color: var(--text-secondary);
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
-  font-size: 0.75rem;
+#modal-container .wrapper .modal .content .info .author .views {
+  margin-left: auto;
 }
-.views .rating {
-  color: #f59e0b;
-  margin-bottom: 0.25rem;
-}
+
 #modal-container .wrapper .modal .content::-webkit-scrollbar {
   width: 0.35rem;
   height: 0.35rem;
@@ -287,10 +282,10 @@ main .zero-result .status-code {
 }
 
 /********************* News Section ****************/
-main .grid.wrapper {
+.grid.wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-rows: 1fr;
+  /* grid-auto-rows: 1fr; */
   grid-auto-flow: row;
   gap: 1rem;
 }
@@ -334,6 +329,7 @@ main .grid.wrapper {
   -webkit-box-orient: vertical;
 }
 .card .card-content .desc {
+  color: var(--text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -342,21 +338,35 @@ main .grid.wrapper {
 }
 
 .card .card-footer {
-  position: absolute;
-  width: 100%;
+  margin-top: auto;
+  /* position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 2px solid var(--bg-disabled);
   padding-top: 0.5rem;
 }
-
+.card .card-footer .read-more {
+  display: none;
+}
 .card .card-footer .author {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.card .card-footer .author .name {
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+  text-transform: capitalize;
+}
+.card .card-footer .views {
+  color: var(--text-secondary);
+}
+.author .date {
+  color: var(--text-secondary);
 }
 .avatar {
   width: 3rem;
@@ -372,15 +382,15 @@ main .grid.wrapper {
   object-fit: cover;
   object-position: center;
 }
-
-.card .card-footer .author .name {
-  font-size: 1.15rem;
-  margin-bottom: 0.25rem;
-  text-transform: capitalize;
-}
-.card .card-footer .views {
+.views {
   color: var(--text-secondary);
+  font-size: 0.75rem;
 }
+.views .rating {
+  color: #f59e0b;
+  margin-bottom: 0.25rem;
+}
+
 /********************* Footer *****************/
 footer {
   margin-top: 1rem;
@@ -405,5 +415,70 @@ footer {
   }
   .grid.wrapper .card .card-content {
     flex-basis: 100%;
+  }
+  .modal {
+    display: flex;
+    width: 80%;
+    margin-inline: auto;
+  }
+  .modal .left-content {
+    flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.25);
+  }
+  .modal .left-content .author {
+    margin-inline: auto;
+    margin-bottom: 1rem;
+  }
+  .modal .left-content .author .name {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
+  .modal .left-content .author .avatar {
+    height: 10rem;
+    width: 10rem;
+    margin-right: 0;
+  }
+  .modal .left-content .block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    margin-block: 1rem;
+    color: var(--text-secondary);
+  }
+  .modal .left-content .block:last-child {
+    color: #f59e0b;
+    margin-bottom: 0;
+    flex-direction: row;
+    justify-self: center;
+    margin-inline: auto;
+  }
+  .modal .content {
+    flex-basis: 80%;
+  }
+  .modal .content .info {
+    display: none;
+  }
+  .modal .content .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.35rem !important;
+  }
+  .modal .content .desc {
+    line-height: 1.25rem;
+    font-size: 1.15rem;
+  }
+  .card .card-footer .read-more {
+    display: block;
+  }
+  .card .card-footer .read-more .btn {
+    color: var(--accent);
+  }
+  #modal-container .wrapper .modal .content .image-container {
+    height: 20rem;
   }
 }

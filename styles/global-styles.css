@@ -6,6 +6,26 @@
   box-sizing: border-box;
 }
 
+*::-webkit-scrollbar {
+  width: 0.75rem;
+  height: 0.35rem;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+*::-webkit-scrollbar-track {
+  margin-block: 1rem;
+  background-color: var(--bg-primary);
+}
+*::-webkit-scrollbar-thumb {
+  margin-right: 1rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.35);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
 :root {
   --bg-primary: hsla(194, 13%, 20%, 1);
   --bg-paper: hsla(184, 11%, 28%, 1);
