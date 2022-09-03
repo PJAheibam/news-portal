@@ -340,6 +340,10 @@ main .zero-result .status-code {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+.card .card-content .title:hover {
+  text-underline-offset: 3px;
+  text-decoration: underline;
+}
 .card .card-content .desc {
   color: var(--text-secondary);
   overflow: hidden;
@@ -498,7 +502,7 @@ main .zero-result .status-code {
     display: block;
   }
   .card .card-footer .read-more .btn {
-    color: var(--accent);
+    color: var(--text);
   }
   #modal-container .wrapper .modal .content .image-container {
     height: 20rem;

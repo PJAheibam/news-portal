@@ -5,3 +5,6 @@
   margin-right: 0.3rem;
   color: var(--accent);
 }
+.name {
+  text-transform: capitalize;
+}

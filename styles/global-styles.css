@@ -47,8 +47,10 @@
   --border-radius-md: 0.4rem;
 }
 
-body {
+html {
   scroll-behavior: smooth;
+}
+body {
   color: var(--text);
   font-family: "Open Sans", sans-serif;
   background-color: var(--bg-primary);
