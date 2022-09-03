@@ -1,4 +1,9 @@
 const categories = document.getElementsByClassName("category");
+const modalContainer = document.getElementById("modal-container");
+const modal = document.querySelector("#modal-container .wrapper .modal");
+const loadingWrapper = document.querySelector(".loading-wrapper");
+const mainLoader = document.querySelector(".profile-main-loader");
+const cards = document.getElementById("cards");
 
 const handleCategoryClick = (event) => {
   const prevActiveCategory = document.querySelector(".category.active");
@@ -7,6 +12,7 @@ const handleCategoryClick = (event) => {
   event.target.classList.add("active");
   const categoryID = event.target.getAttribute("data-category-id");
   const categoryName = event.target.innerText;
+  toggleSpinner(true);
   fetchArticles(categoryID, categoryName);
 };
 
@@ -57,9 +63,13 @@ const displayTotalResults = (totalArticles, categoryName) => {
   totalResults.innerText = `Total ${totalArticles} news found for category ${categoryName}`;
 };
 const displayArticles = (articles) => {
-  console.log(articles);
-  const cards = document.getElementById("cards");
-  cards.innerHTML = "";
+  const zeroResults = document.querySelector(".zero-result");
+  if (articles.length === 0) {
+    console.log(zeroResults);
+    zeroResults.style.display = "flex";
+    return;
+  }
+  zeroResults.style.display = "none";
   articles.forEach((article) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -72,7 +82,7 @@ const displayArticles = (articles) => {
           </div>
           <div class="card-content">
             <div class="card-header">
-              <h3 class="title">
+              <h3 onclick="fetchArticle('${article._id}')" class="title">
                 ${article.title}
               </h3>
             </div>
@@ -90,11 +100,109 @@ const displayArticles = (articles) => {
                   article.author.name ? article.author.name : "Unknown Author"
                 }</p>
               </div>
-              <h4 class="views">${article.total_view}K</h4>
-              <button class="btn">Read More</button>
+              <h4 class="views"> 
+              <i class="fa-regular fa-eye"></i>
+              ${article.total_view ? article.total_view : "000"}K
+              </h4>
+              
             </div>
           </div>
     `;
     cards.appendChild(card);
   });
+
+  console.log("off");
+  toggleSpinner(false);
+};
+
+const fetchArticle = async (newsID) => {
+  const NEWS_API_URL = `https://openapi.programming-hero.com/api/news/${newsID}`;
+  try {
+    const res = await fetch(NEWS_API_URL);
+    const {
+      data: [article],
+    } = await res.json();
+    openArticle(article);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const openArticle = ({
+  rating: { number },
+  total_view,
+  title,
+  author: { name, published_date, img },
+  image_url,
+  details,
+}) => {
+  modalContainer.style.opacity = 1;
+  modalContainer.style.pointerEvents = "auto";
+  modal.style.transform = "scale(1)";
+  modal.innerHTML = "";
+  modal.innerHTML = `
+  <button onclick="closeArticle()" class="btn modal-close-btn">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+  <div class="content">
+              <div class="image-container">
+                <img
+                  src="${image_url}"
+                  alt="thumbnail"
+                />
+              </div>
+              <h4 class="title">
+                ${title}
+              </h4>
+              <div class="info">
+                <div class="author">
+                  <div class="avatar">
+                    <img
+                      src="${img}"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="name">${name}</div>
+                    <p class="date">Published On: <span>${published_date}</span></p>
+                  </div>
+
+                  <div class="views">
+                    <div class="rating">
+                      <span class="star"><i class="fa-solid fa-star"></i></span>
+                      <span class="star"><i class="fa-solid fa-star"></i></span>
+                      <span class="star"><i class="fa-solid fa-star"></i></span>
+                      <span class="star"
+                        ><i class="fa-regular fa-star-half-stroke"></i
+                      ></span>
+                      <span class="star"
+                        ><i class="fa-regular fa-star"></i
+                      ></span>
+                    </div>
+                    <div><i class="fa-regular fa-eye"></i>${total_view} K</div>
+                  </div>
+                </div>
+              </div>
+              <p class="desc">
+                ${details}
+              </p>
+            </div>
+  `;
+};
+
+const closeArticle = () => {
+  modalContainer.style.opacity = 0;
+  modalContainer.style.pointerEvents = "none";
+  modal.style.transform = "scale(0)";
+};
+
+const toggleSpinner = (isLoading) => {
+  if (isLoading) {
+    loadingWrapper.classList.add("active");
+    mainLoader.classList.add("active");
+    cards.innerHTML = "";
+  } else {
+    loadingWrapper.classList.remove("active");
+    mainLoader.classList.remove("active");
+  }
 };

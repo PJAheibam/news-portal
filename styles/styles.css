@@ -57,6 +57,7 @@
   gap: 1rem;
 }
 .nav-container .wrapper .nav-items .nav-item .nav-link {
+  position: relative;
   cursor: pointer;
   color: var(--text);
   font-size: 1.25rem;
@@ -68,6 +69,17 @@
 }
 .nav-container .wrapper .nav-items .nav-item .nav-link.active {
   color: var(--text-hover);
+}
+.nav-container .wrapper .nav-items .nav-item .nav-link.active::after {
+  position: absolute;
+  content: "";
+  width: 120%;
+  height: 0.1em;
+  left: 50%;
+  bottom: -0.25em;
+  transform: translate(-50%, 0%);
+  border-radius: 0.1em;
+  background-color: var(--text-hover);
 }
 
 /********************* Category **********************/
@@ -101,6 +113,151 @@ main .sort.wrapper .part {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+/***************** Zero Result ********************/
+main .zero-result {
+  min-height: 500px;
+  height: 30vh;
+  margin-bottom: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+}
+main .zero-result .fa-face-frown {
+  /* position: absolute; */
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  color: hsla(0, 50%, 50%, 0.15);
+}
+main .zero-result .status-code {
+  font-size: 3rem;
+  color: hsla(0, 50%, 50%, 0.75);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-md);
+  background-color: hsla(0, 50%, 50%, 0.1);
+  margin-bottom: 1rem;
+}
+
+/*********************** Modal Section **********************/
+#modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--modal-bg);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+#modal-container .wrapper .modal {
+  position: relative;
+  height: 70vh;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-right: 0.25rem;
+  border-radius: var(--border-radius-md);
+  border-top: 2px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid rgba(255, 255, 255, 0.015);
+  border-right: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  background-color: var(--modal-fg);
+  backdrop-filter: blur(5px);
+  overscroll-behavior: contain;
+  transform: scale(0);
+  transition: transform 300ms ease;
+  /* overflow-y: auto; */
+}
+
+.modal-close-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  right: 0.5rem;
+  top: 0.5rem;
+  padding: 0.12em 0.3em;
+  border-radius: 50%;
+  color: transparent;
+  background-image: radial-gradient(#e66465, var(--danger));
+}
+.modal-close-btn:hover {
+  color: var(--text-hover);
+  background-color: var(--danger);
+}
+
+#modal-container .wrapper .modal .content {
+  padding-right: 0.5rem;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior-block: contain;
+}
+#modal-container .wrapper .modal .content .image-container {
+  width: 100%;
+  height: 10rem;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+#modal-container .wrapper .modal .content .image-container img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+#modal-container .wrapper .modal .content .title {
+  margin-bottom: 0.5rem;
+}
+#modal-container .wrapper .modal .content .info {
+  margin-block: 0.5rem;
+}
+#modal-container .wrapper .modal .content .info .author {
+  display: flex;
+  align-items: center;
+}
+#modal-container .wrapper .modal .content .info .author .date {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+#modal-container .wrapper .modal .content .info .author .views {
+  margin-left: auto;
+  color: var(--text-secondary);
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  font-size: 0.75rem;
+}
+#modal-container .wrapper .modal .content .info .author .views .rating {
+  color: #f59e0b;
+  margin-bottom: 0.25rem;
+}
+#modal-container .wrapper .modal .content::-webkit-scrollbar {
+  width: 0.35rem;
+  height: 0.35rem;
+}
+#modal-container .wrapper .modal .content::-webkit-scrollbar-corner {
+  background: transparent;
+}
+#modal-container .wrapper .modal .content::-webkit-scrollbar-track {
+  background-color: hsla(0, 0%, 20%, 0.75);
+}
+#modal-container .wrapper .modal .content::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+#modal-container .star {
+  cursor: pointer;
+  margin-right: 0.25rem;
 }
 
 /********************* News Section ****************/
@@ -140,6 +297,7 @@ main .grid.wrapper {
   gap: 0.75rem;
 }
 .card .card-content .title {
+  cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -167,22 +325,26 @@ main .grid.wrapper {
   align-items: center;
   gap: 0.5rem;
 }
-.card .card-footer .avatar {
+.avatar {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
+  margin-right: 0.75rem;
   background-color: var(--bg-disabled);
   overflow: hidden;
 }
-.card .card-footer .avatar img {
+.avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-.card .card-footer .avatar .name {
+.card .card-footer .author .name {
   text-transform: capitalize;
+}
+.card .card-footer .views {
+  color: var(--text-secondary);
 }
 /********************* Footer *****************/
 footer {

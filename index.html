@@ -48,9 +48,7 @@
 
       <!--~~~~~~~~~~~~~~~ TOTAL RESULTS SECTION ~~~~~~~~~~~~~~~~~~-->
       <section class="wrapper">
-        <p class="total-results">
-          Total 5 news found for category Entertainment
-        </p>
+        <p class="total-results"></p>
       </section>
       <!--~~~~~~~~~~~~~~~ SORT BY SECTION ~~~~~~~~~~~~~~~~~~-->
       <section class="sort wrapper">
@@ -66,41 +64,102 @@
         </div>
       </section>
 
-      <!--~~~~~~~~~~~~~~~~~ NEWS SECTION ~~~~~~~~~~~~~~~~-->
-      <section id="cards" class="grid wrapper">
-        <div class="card">
-          <div class="thumbnail">
-            <img
-              src="https://source.unsplash.com/random/300×300"
-              alt="thumbnail"
-            />
-          </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="title">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Similique excepturi repudiandae, aspernatur reiciendis non eos!
-              </h3>
-            </div>
-            <div class="card-body">
+      <!--~~~~~~~~~~~~~~~~ 0 RESULT SECTION ~~~~~~~~~~~~-->
+      <section class="wrapper">
+        <div class="zero-result">
+          <i class="fa-regular fa-face-frown"></i>
+          <div class="status-code">404</div>
+          <p>No result found for requested API</p>
+        </div>
+      </section>
+
+      <!--~~~~~~~~~~~~~~~ NEWS MODAL ~~~~~~~~~~-->
+      <section id="modal-container">
+        <div class="wrapper">
+          <div class="modal">
+            <!-- <button onclick="closeArticle()" class="btn modal-close-btn">
+              <i class="fa-solid fa-xmark"></i>
+            </button> -->
+            <!-- <div class="content">
+              <div class="image-container">
+                <img
+                  src="https://i.ibb.co/M23fhxm/unsplash-Eh-Tc-C9s-YXsw.png"
+                  alt=""
+                />
+              </div>
+              <h4 class="title">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+                eius qui voluptatum obcaecati numquam sunt.
+              </h4>
+              <div class="info">
+                <div class="author">
+                  <div class="avatar">
+                    <img
+                      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <div class="name">Jimmy Dane</div>
+                    <p class="date">Published On: <span>2022-08-24</span></p>
+                  </div>
+
+                  <div class="views">
+                    <div class="rating">
+                      <span class="star"><i class="fa-solid fa-star"></i></span>
+                      <span class="star"><i class="fa-solid fa-star"></i></span>
+                      <span class="star"><i class="fa-solid fa-star"></i></span>
+                      <span class="star"
+                        ><i class="fa-regular fa-star-half-stroke"></i
+                      ></span>
+                      <span class="star"
+                        ><i class="fa-regular fa-star"></i
+                      ></span>
+                    </div>
+                    <div><i class="fa-regular fa-eye"></i>100 K</div>
+                  </div>
+                </div>
+              </div>
               <p class="desc">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Quisquam laboriosam maiores quasi molestiae ipsum dolorum,
-                distinctio dolore odio aliquam nostrum numquam unde error
-                provident id architecto? Quo ex velit quis.
+                Praesentium earum consequatur sed qui minus quos quod eius hic
+                debitis, quia sapiente eaque sint quam ad? Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Sit aliquid necessitatibus
+                amet in, animi veniam! Expedita architecto laudantium voluptates
+                qui, rerum, consequuntur eligendi dolorum aut repellendus natus
+                ex asperiores, explicabo odio vel? Tenetur voluptatibus quidem
+                et cum hic nobis voluptates dolor quae dolorem perspiciatis
+                consequatur sapiente dolores, sunt accusantium! Lorem ipsum,
+                dolor sit amet consectetur adipisicing elit. Magnam sequi iusto
+                unde quaerat odio perspiciatis, temporibus consequuntur facere
+                quidem qui incidunt similique iste quis doloribus expedita
+                dignissimos quam deserunt. Quia.
               </p>
-            </div>
-            <div class="card-footer">
-              <div class="author">
-                <div class="avatar"></div>
-                <p class="name">Prosenjit Singha</p>
-              </div>
-              <h4 class="views">1.5M</h4>
-              <button class="btn">Read More</button>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
+      <!--~~~~~~~~~~~~~~~~~ LOADING ~~~~~~~~~~~~~~-->
+      <div class="loading-wrapper active">
+        <div class="profile-main-loader active">
+          <div class="loader">
+            <svg class="circular-loader" viewBox="25 25 50 50">
+              <circle
+                class="loader-path"
+                cx="50"
+                cy="50"
+                r="20"
+                fill="none"
+                stroke="#70c542"
+                stroke-width="2"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!--~~~~~~~~~~~~~~~~~ NEWS SECTION ~~~~~~~~~~~~~~~~-->
+      <section id="cards" class="grid wrapper"></section>
     </main>
     <footer class="footer"></footer>
     <!--~~~~~~~ SCRIPTS [START]~~~~~~~~-->

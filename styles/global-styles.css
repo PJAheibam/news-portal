@@ -14,14 +14,19 @@
   --accent-bg: hsla(27, 28%, 50%, 0.15);
   --accent-bg-hover: hsla(27, 28%, 50%, 0.3);
   --text: hsla(44, 21%, 80%, 1);
+  --text-secondary: hsla(44, 21%, 80%, 0.75);
   --text-hover: hsla(44, 21%, 90%, 1);
   --text-disabled: hsla(0, 0%, 100%, 0.15);
+  --modal-bg: hsla(194, 10%, 5%, 0.75);
+  --modal-fg: hsla(194, 15%, 20%, 0.5);
+  --danger: hsla(0, 60%, 50%, 1);
   --border-radius-sm: 0.15rem;
   --border-radius: 0.25rem;
   --border-radius-md: 0.4rem;
 }
 
 body {
+  scroll-behavior: smooth;
   color: var(--text);
   font-family: "Open Sans", sans-serif;
   background-color: var(--bg-primary);
