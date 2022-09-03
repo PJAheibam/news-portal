@@ -7,7 +7,7 @@
 }
 
 *::-webkit-scrollbar {
-  width: 0.75rem;
+  width: 0.5rem;
   height: 0.35rem;
 }
 *::-webkit-scrollbar-corner {
