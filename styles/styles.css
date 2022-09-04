@@ -105,7 +105,9 @@ main .category-container {
 main .wrapper .total-results {
   display: block;
   padding-block: 1rem;
+  font-size: 1.25rem;
   text-align: center;
+  color: var(--text-secondary);
   background-color: var(--bg-paper);
   border-radius: var(--border-radius);
 }
@@ -338,7 +340,7 @@ main .zero-result .status-code {
 }
 .card .card-content .title {
   font-weight: normal;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -352,6 +354,7 @@ main .zero-result .status-code {
 }
 .card .card-content .desc {
   color: var(--text-secondary);
+  font-size: 1.15rem;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -501,7 +504,7 @@ main .zero-result .status-code {
     margin-bottom: 1.35rem !important;
   }
   .modal .content .desc {
-    line-height: 1.25rem;
+    line-height: 1.75rem;
     font-size: 1.15rem;
   }
   .card .card-footer .read-more {
