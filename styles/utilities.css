@@ -8,3 +8,6 @@
 .name {
   text-transform: capitalize;
 }
+.fa-solid.fa-arrow-right {
+  color: inherit;
+}

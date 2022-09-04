@@ -24,15 +24,15 @@
   outline: none;
   border-radius: var(--border-radius);
   background-color: var(--accent-bg);
-  color: var(--text);
+  color: var(--accent-text);
   font-size: 1.15rem;
   font-weight: 500;
   text-transform: capitalize;
   padding: 0.35em 0.5em;
-  transition: background-color 300ms ease;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 .btn:hover {
-  color: var(--text-hover);
+  /* color: var(--text-hover); */
   background-color: var(--accent-bg-hover);
 }
 .btn:active {
@@ -46,6 +46,7 @@
   background-color: var(--bg-disabled);
 }
 .btn.active {
+  color: var(--text);
   background-color: var(--accent);
 }
 
@@ -506,7 +507,7 @@ main .zero-result .status-code {
     display: block;
   }
   .card .card-footer .read-more .btn {
-    color: var(--text);
+    /* color: var(--text); */
   }
   #modal-container .wrapper .modal .content .image-container {
     height: 20rem;
